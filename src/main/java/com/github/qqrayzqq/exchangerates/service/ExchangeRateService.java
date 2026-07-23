@@ -6,12 +6,10 @@ import com.github.qqrayzqq.exchangerates.exception.ExternalApiException;
 import com.github.qqrayzqq.exchangerates.repository.ExchangeRateRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestClientException;
 
-import java.time.Duration;
 import java.util.List;
 
 @Service
@@ -20,16 +18,12 @@ public class ExchangeRateService {
     private final String ersteApiUrl;
     private final ExchangeRateRepository exchangeRateRepository;
 
-    public ExchangeRateService(@Value("${erste.api.url}") String ersteApiUrl, ExchangeRateRepository exchangeRateRepository) {
-        this.exchangeRateRepository = exchangeRateRepository;
+    public ExchangeRateService(@Value("${erste.api.url}") String ersteApiUrl,
+                               RestClient restClient,
+                               ExchangeRateRepository exchangeRateRepository) {
         this.ersteApiUrl = ersteApiUrl;
-
-        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        factory.setConnectTimeout(Duration.ofSeconds(3));
-        factory.setReadTimeout(Duration.ofSeconds(5));
-        this.restClient = RestClient.builder()
-                .requestFactory(factory)
-                .build();
+        this.restClient = restClient;
+        this.exchangeRateRepository = exchangeRateRepository;
     }
 
     public List<ExchangeRateDTO> getAllExchangeRates(Boolean usedb) {
