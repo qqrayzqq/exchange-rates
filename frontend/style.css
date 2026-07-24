@@ -1,0 +1,38 @@
+body {
+    font-family: system-ui, sans-serif;
+    margin: 2rem;
+    color: #222;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+}
+
+th {
+    background: #f4f4f4;
+}
+
+tr:hover td {
+    background: #fafafa;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

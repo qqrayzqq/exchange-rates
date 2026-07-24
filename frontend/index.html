@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Rates</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Exchange Rates</h1>
+
+    <p id="status">Loading…</p>
+
+    <table id="rates" hidden>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Currency</th>
+                <th>Country</th>
+                <th>Buy</th>
+                <th>Sell</th>
+                <th>Mid</th>
+            </tr>
+        </thead>
+        <tbody id="rates-body"></tbody>
+    </table>
+
+    <script src="list.js"></script>
+</body>
+</html>
